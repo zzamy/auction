@@ -13,9 +13,11 @@ from PIL import Image, ImageTk
 import os.path
 
 widget = tkinter.Tk()
-# script_dir = os.path.dirname(__file__) #패스설정
-# image_file = os.path.join(script_dir, "0.jpg") #패스설정
-wb = openpyxl.load_workbook('c:/auction_system/auction.xlsx')
+This_folder = os.path.dirname(os.path.abspath(__file__)) #패스설정
+Excel_file = os.path.join(This_folder, 'auction.xlsx') #패스설정
+##Greeting = "0"
+##JPG_file = os.path.join(This_folder, f'{Greeting}.jpg')
+wb = openpyxl.load_workbook(Excel_file)
 wb.get_sheet_names()
 test = wb.get_sheet_by_name("Sheet1")
 
@@ -35,19 +37,27 @@ SEQ_Scanning = tkinter.Entry(widget, width=30, justify='center', bg='yellow')
 SEQ_Scanning.grid(row=5, column=1, padx=5)
 Seq=SEQ_Scanning.get()
 Pic1="0"
-Pic = ImageTk.PhotoImage(Image.open(f"{Pic1}.jpg"))
+#Pic = ImageTk.PhotoImage(Image.open(f"{Pic1}.jpg"))
 #Pic = tkinter.PhotoImage(Image.open("c:/auction_system/"+f"{Pic1}.jpg"))
 
 
 # 차량 사진 불러오기
-image1 = ImageTk.PhotoImage(file=f"{Pic1}.jpg")
-tkinter.Label(widget, image = image1).place(x = 600, y = 200)
+#image1 = ImageTk.PhotoImage(file=f"{Pic1}.jpg")
+#tkinter.Label(widget, image = image1).place(x = 600, y = 200)
 #image1 = tkinter.PhotoImage(file="c:/auction_system/" + f"{Pic1}.jpg")
 #tkinter.Label(widget, image = image1).place(x = 600, y = 200)
 
+#im = Image.open(JPG_file)
+#ph = ImageTk.PhotoImage(im)
+#label = tkinter.Label(widget, image=ph).place(x = 600,y = 100)
+
+Greeting = "0"
+JPG_file = os.path.join(This_folder, f'{Greeting}.jpg')
+
+print (Greeting)
 
 # 버튼 설정
-tkinter.Button(widget, text="Sequencing", width=10, font=30, command=lambda:[Sq1(), Sq2(), Sq3(), Sq4(), Sq5()]).grid(row=5, column=3)
+tkinter.Button(widget, text="Sequencing", width=10, font=30, command=lambda:[Sq1(), Sq2(), Sq3(), Sq4(), Sq5(), Updation()]).grid(row=5, column=3)
 
 # Sequencing
 def Sq1():    
@@ -67,6 +77,15 @@ def Sq5():
 
 # 출력 부문 설정
 txt1 = tkinter.IntVar()
+
+def Updation():
+    if txt1.get() > 0 :
+        im = Image.open(JPG_file)
+        ph = ImageTk.PhotoImage(im)
+        label = tkinter.Label(widget, image=ph).place(x = 600,y = 100)
+        print (Greeting)
+        print (JPG_file)
+
 txt2 = tkinter.StringVar()
 txt3 = tkinter.StringVar() #
 txt4 = tkinter.StringVar() #
