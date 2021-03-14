@@ -137,11 +137,11 @@ def IMG_show4():
 #print (Greeting)
 
 # 버튼 설정
-Sq_Button = tkinter.Button(widget, text="Seq", width=10, font=("Malgun Gothic", "15"), command=lambda:[Sq1(), Sq2(), Sq3(), Sq4(), Sq5(), IMG_show4(), IMG_show3(), IMG_show2(), IMG_show1(), S_Price(), B_Price()]).place(x=450, y = 140) # 그리드 설정
+Sq_Button = tkinter.Button(widget, text="Seq", width=10, font=("Malgun Gothic", "15"), command=lambda:[Sq1(), Sq2(), Sq3(), Sq4(), Sq5(), IMG_show4(), IMG_show3(), IMG_show2(), IMG_show1(), S_Price(), B_Price(), compare()]).place(x=450, y = 140) # 그리드 설정
 # Sq_Button = tkinter.Button(widget, text="Sequencing", width=10, font=30, command=lambda:[Sq1(), Sq2(), Sq3(), Sq4(), Sq5(), Updation()]).place(x = 400, y = 200)
-Bid_Button1 = tkinter.Button(widget, text="RS. 1,000", width=10, font=("Malgun Gothic", "15"), command=lambda:[B_1000(), B_Price(), Bidder_Ent(), compare()]).place(x=100, y = 950)
-Bid_Button3 = tkinter.Button(widget, text="RS. 3,000", width=10, font=("Malgun Gothic", "15"), command=lambda:[B_3000(), B_Price(), Bidder_Ent(), compare()]).place(x=250, y = 950)
-Bid_Button5 = tkinter.Button(widget, text="RS. 5,000", width=10, font=("Malgun Gothic", "15"), command=lambda:[B_5000(), B_Price(), Bidder_Ent(), compare()]).place(x=400, y = 950)
+Bid_Button1 = tkinter.Button(widget, text="RS. 1,000", width=10, font=("Malgun Gothic", "15"), command=lambda:[B_1000(), B_Price(), L_cost(), Bidder_Ent(), B_Status(), compare(), Bidders1()]).place(x=100, y = 950)
+Bid_Button3 = tkinter.Button(widget, text="RS. 3,000", width=10, font=("Malgun Gothic", "15"), command=lambda:[B_3000(), B_Price(), L_cost(), Bidder_Ent(), B_Status(), compare(), Bidders1()]).place(x=250, y = 950)
+Bid_Button5 = tkinter.Button(widget, text="RS. 5,000", width=10, font=("Malgun Gothic", "15"), command=lambda:[B_5000(), B_Price(), L_cost(), Bidder_Ent(), B_Status(), compare(), Bidders1()]).place(x=400, y = 950)
 
 #비더 표시
 #tkinter.Label(widget, text="Winner", font=("Malgun Gothic", "15")).place(x=100, y = 145)
@@ -192,14 +192,21 @@ def Bidder_Ent():
     test.cell(txt1.get()+1, 10).value = Winner_Input.get()
     wb.save("auction.xlsx")
 
-def compare():
+def B_Status():
     if LandCost.get() > BidPrice.get() :
-        chk ="Need to Negotiation!"
+        test.cell(txt1.get()+1, 11).value = "Under Negotiation.."
+        wb.save("auction.xlsx")
+
     else :
-        chk ="Winner!"
+        test.cell(txt1.get()+1, 11).value = "Winner!"
+        wb.save("auction.xlsx")
+        playsound("trumpet.mp3")
 
- 
+def compare():
+    BidStatus.set(test.cell(txt1.get()+1, 11).value)
 
+def Bidders1():
+    BiderStatus.set(test.cell(txt1.get()+1, 10).value)
 
 # 출력 부문 설정
 txt1 = tkinter.IntVar()
@@ -225,6 +232,8 @@ txt6 = tkinter.StringVar()
 StartPrice = tkinter.IntVar() #
 BidPrice = tkinter.IntVar() #
 LandCost = tkinter.IntVar()
+BidStatus = tkinter.StringVar()
+BiderStatus = tkinter.StringVar()
 
 #tkinter.Label(widget, text="                                                            ").grid(row=0, column=0) # 공백
 #tkinter.Label(widget, text="                                                            ").grid(row=1, column=0) # 공백
@@ -252,8 +261,13 @@ tkinter.Label(widget, textvariable=txt5, width=18, justify='center', bg='white',
 tkinter.Label(widget, text="Start Price : RS.", font=("Malgun Gothic", "30")).place(x=50, y = 500) #차량 소유자 수
 tkinter.Label(widget, textvariable=StartPrice, width=8, justify='center', font=("Malgun Gothic", "30")).place(x=350, y = 500) # 게시용6
 
-tkinter.Label(widget, text="BID Price : RS.", font=("Malgun Gothic", "32")).place(x=50, y = 570) #차량 소유자 수
-Bidding = tkinter.Label(widget, textvariable=BidPrice, width=8, justify='center', fg = 'blue', font=("Malgun Gothic", "32")).place(x=350, y = 570) # 게시용7
+tkinter.Label(widget, text="BID Price : RS.", font=("Malgun Gothic", "30")).place(x=50, y = 570) #차량 소유자 수
+Bidding = tkinter.Label(widget, textvariable=BidPrice, width=8, justify='center', fg = 'blue', font=("Malgun Gothic", "30")).place(x=350, y = 570) # 게시용7
+
+tkinter.Label(widget, text="No.", font=("Malgun Gothic", "32")).place(x=150, y = 690)
+tkinter.Label(widget, text="Applicant is", font=("Malgun Gothic", "20")).place(x=355, y = 705)
+Bidders = tkinter.Label(widget, textvariable=BiderStatus, width=3, justify='center', fg = 'red', font=("Malgun Gothic", "45")).place(x=250, y = 670)
+Bid_s = tkinter.Label(widget, textvariable=BidStatus, width=17, bg='white', justify='center', fg = 'red', font=("Malgun Gothic", "45")).place(x=10, y = 770)
 
 #Nego = tkinter.Label(widget, textvariable=chk, justify='center', font=("Malgun Gothic", "25")).place(x=200, y = 700)
 
