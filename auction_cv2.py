@@ -13,7 +13,11 @@ import os.path
 import cv2
 
 widget = tkinter.Tk()
+<<<<<<< HEAD
 widget1 = tkinter.Toplevel()
+=======
+widget1 = tkinter.Tk()
+>>>>>>> 113fcba9acd7a96e0c7fcff37306637439123101
 This_folder = os.path.dirname(os.path.abspath(__file__)) #패스설정
 Excel_file = os.path.join(This_folder, 'auction.xlsx') #패스설정
 ##Greeting = "0"
@@ -31,10 +35,15 @@ widget.geometry("600x1060+0+0")
 widget1.geometry("1320x1060+600+0")
 
 # 글로비스 or 오토벨 로고
+<<<<<<< HEAD
 image = tkinter.PhotoImage(file="c:/auction_system/glovis11.png")
 glovis_logo = tkinter.Label(widget, image = image).place(x = 0, y = 0)
 autoimage = tkinter.PhotoImage(file="c:/auction_system/autobell.png")
 autobell_logo = tkinter.Label(widget1, image = autoimage).place(x = 850, y = 0)
+=======
+image = tkinter.PhotoImage(file="glovis11.png")
+tkinter.Label(widget, image = image).place(x = 0, y = 0)
+>>>>>>> 113fcba9acd7a96e0c7fcff37306637439123101
 #tkinter.Label(widget, image = image).grid(row=0, column=0)
 
 # SEQ 키인
@@ -55,6 +64,7 @@ SEQ_Input.place(x=230, y = 150)
 #    label_Img.configure(image = img)
 #    label_Img.image=img
 
+<<<<<<< HEAD
 #def IMG_fix1():
 #    txt_s = str(SEQ_Input.get())
 #    py_Img=tkinter.PhotoImage(file=f"{txt_s}.png")
@@ -65,6 +75,18 @@ SEQ_Input.place(x=230, y = 150)
 #    label_Img = tkinter.Label(widget, text = "Image Load...", image = py_Img).place(x = 600, y = 300)
 #    print (txt_s)
 #    print (SEQ_Input.get())
+=======
+def IMG_fix1():
+    txt_s = str(SEQ_Input.get())
+    py_Img=tkinter.PhotoImage(file=f"{txt_s}.png")
+
+def IMG_fix():
+    txt_s = str(SEQ_Input.get())
+    py_Img=tkinter.PhotoImage(file=f"{txt_s}.png")
+    label_Img = tkinter.Label(widget, text = "Image Load...", image = py_Img).place(x = 600, y = 300)
+    print (txt_s)
+    print (SEQ_Input.get())
+>>>>>>> 113fcba9acd7a96e0c7fcff37306637439123101
 # label_Img = tkinter.Label(widget, text = "Image Load...", image = py_Img).grid(row=10, column=10)
 #label_Img.pack()
 
@@ -92,6 +114,7 @@ SEQ_Input.place(x=230, y = 150)
 
 #CV 방식 응용 셋팅
 
+<<<<<<< HEAD
 def IMG_show1():                #_0 사진
     imim = str(SEQ_Input.get()) #SEQ 받기
     img_src ="c:/auction_system/" + f"{imim}_0.jpg" #파일이름 설정해주기
@@ -131,6 +154,47 @@ def IMG_show2(): #_1 사진
 #    cv2.namedWindow(winname3)   
 #    cv2.moveWindow(winname3, 1261, 516)   
 #    cv2.imshow(winname3, img8)
+=======
+def IMG_show1():
+    imim = str(SEQ_Input.get()) #SEQ 받기
+    img_src = f"{imim}_0.png" #파일이름 설정해주기
+    img = cv2.imread(img_src) # 읽을 파일 결정
+    img1 = cv2.resize(img, (660, 485))
+    winname = "AutoPIC1"
+    cv2.namedWindow(winname)  
+    cv2.moveWindow(winname, 601, 30)  
+    cv2.imshow(winname, img1)
+
+def IMG_show2():
+    imim = str(SEQ_Input.get()) #SEQ 받기
+    img_src1 = f"{imim}_1.png" #파일이름 설정해주기
+    img3 = cv2.imread(img_src1) # 읽을 파일 결정
+    img4 = cv2.resize(img3, (660, 485))
+    winname1 = "AutoPIC2"
+    cv2.namedWindow(winname1)   
+    cv2.moveWindow(winname1, 1261, 30)   
+    cv2.imshow(winname1, img4)
+
+def IMG_show3():
+    imim = str(SEQ_Input.get()) #SEQ 받기
+    img_src2 = f"{imim}_2.png" #파일이름 설정해주기
+    img5 = cv2.imread(img_src2) # 읽을 파일 결정
+    img6 = cv2.resize(img5, (660, 485))
+    winname2 = "AutoPIC3"
+    cv2.namedWindow(winname2) 
+    cv2.moveWindow(winname2, 601, 516)   
+    cv2.imshow(winname2, img6)
+
+def IMG_show4():
+    imim = str(SEQ_Input.get()) #SEQ 받기
+    img_src3 = f"{imim}_3.png" #파일이름 설정해주기
+    img7 = cv2.imread(img_src3) # 읽을 파일 결정
+    img8 = cv2.resize(img7, (660, 485))
+    winname3 = "AutoPIC4"
+    cv2.namedWindow(winname3)   
+    cv2.moveWindow(winname3, 1261, 516)   
+    cv2.imshow(winname3, img8)
+>>>>>>> 113fcba9acd7a96e0c7fcff37306637439123101
 
     #cv2.imshow('Car IMG1', img)
     #cv2.namedWindow(car_img1)
@@ -139,8 +203,12 @@ def IMG_show2(): #_1 사진
 #print (Greeting)
 
 # 버튼 설정
+<<<<<<< HEAD
 Sq_Button = tkinter.Button(widget, text="Seq", width=10, font=("Malgun Gothic", "15"), command=lambda:[Sq1(), Sq2(), Sq3(), Sq4(), Sq5(), IMG_show2(), IMG_show1(), S_Price(), B_Price(), compare()]).place(x=450, y = 140) # 그리드 설정
 # Sq_Button = tkinter.Button(widget, text="Seq", width=10, font=("Malgun Gothic", "15"), command=lambda:[Sq1(), Sq2(), Sq3(), Sq4(), Sq5(), IMG_show4(), IMG_show3(), IMG_show2(), IMG_show1(), S_Price(), B_Price(), compare()]).place(x=450, y = 140) # 그리드 설정
+=======
+Sq_Button = tkinter.Button(widget, text="Seq", width=10, font=("Malgun Gothic", "15"), command=lambda:[Sq1(), Sq2(), Sq3(), Sq4(), Sq5(), IMG_show4(), IMG_show3(), IMG_show2(), IMG_show1(), S_Price(), B_Price(), compare()]).place(x=450, y = 140) # 그리드 설정
+>>>>>>> 113fcba9acd7a96e0c7fcff37306637439123101
 # Sq_Button = tkinter.Button(widget, text="Sequencing", width=10, font=30, command=lambda:[Sq1(), Sq2(), Sq3(), Sq4(), Sq5(), Updation()]).place(x = 400, y = 200)
 Bid_Button1 = tkinter.Button(widget, text="RS. 1,000", width=10, font=("Malgun Gothic", "15"), command=lambda:[B_1000(), B_Price(), L_cost(), Bidder_Ent(), B_Status(), compare(), Bidders1()]).place(x=100, y = 950)
 Bid_Button3 = tkinter.Button(widget, text="RS. 3,000", width=10, font=("Malgun Gothic", "15"), command=lambda:[B_3000(), B_Price(), L_cost(), Bidder_Ent(), B_Status(), compare(), Bidders1()]).place(x=250, y = 950)
@@ -181,6 +249,7 @@ def B_Price():    #현재 비드 프라이스를 가지고 온다
 
 def B_1000():
     test.cell(txt1.get()+1, 9).value = test.cell(txt1.get()+1, 9).value + 1000
+<<<<<<< HEAD
     wb.save("c:/auction_system/auction.xlsx")
 
 def B_3000():
@@ -194,16 +263,40 @@ def B_5000():
 def Bidder_Ent():
     test.cell(txt1.get()+1, 10).value = Winner_Input.get()
     wb.save("c:/auction_system/auction.xlsx")
+=======
+    wb.save("auction.xlsx")
+
+def B_3000():
+    test.cell(txt1.get()+1, 9).value = test.cell(txt1.get()+1, 9).value + 3000
+    wb.save("auction.xlsx")
+
+def B_5000():
+    test.cell(txt1.get()+1, 9).value = test.cell(txt1.get()+1, 9).value + 5000
+    wb.save("auction.xlsx")
+
+def Bidder_Ent():
+    test.cell(txt1.get()+1, 10).value = Winner_Input.get()
+    wb.save("auction.xlsx")
+>>>>>>> 113fcba9acd7a96e0c7fcff37306637439123101
 
 def B_Status():
     if LandCost.get() > BidPrice.get() :
         test.cell(txt1.get()+1, 11).value = "Under Negotiation.."
+<<<<<<< HEAD
         wb.save("c:/auction_system/auction.xlsx")
 
     else :
         test.cell(txt1.get()+1, 11).value = "Winner!"
         wb.save("c:/auction_system/auction.xlsx")
         playsound("c:/auction_system/OK.wav")
+=======
+        wb.save("auction.xlsx")
+
+    else :
+        test.cell(txt1.get()+1, 11).value = "Winner!"
+        wb.save("auction.xlsx")
+        playsound("trumpet.mp3")
+>>>>>>> 113fcba9acd7a96e0c7fcff37306637439123101
 
 def compare():
     BidStatus.set(test.cell(txt1.get()+1, 11).value)
